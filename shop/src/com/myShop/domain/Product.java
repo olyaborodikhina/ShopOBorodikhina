@@ -1,12 +1,11 @@
-package domain;
+package com.myShop.domain;
 
 /**
  * Created by hp on 27.11.2016.
  */
 public class Product {
-    int idProduct;
-    String name = "";
-    long price = 0;
+   String name = "";
+   long price = 0;
 
     public Product(){}
 

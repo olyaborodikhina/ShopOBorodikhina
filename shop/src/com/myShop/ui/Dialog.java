@@ -1,7 +1,6 @@
-package UI;
+package com.myShop.ui;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class Dialog extends JDialog {
@@ -16,6 +15,7 @@ public class Dialog extends JDialog {
     private JLabel Name;
     private JTable Orders;
     private JTextArea textArea1;
+    private JButton ADDButton;
 
 
     public Dialog() {
@@ -58,6 +58,7 @@ public class Dialog extends JDialog {
 
         comboBox1.addComponentListener(new ComponentAdapter() {
         });
+
         //all the Products
         comboBox1.addItem("uyuyuyu");
 
@@ -65,13 +66,19 @@ public class Dialog extends JDialog {
         comboBox1.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                textArea1.append((String)comboBox1.getSelectedItem());
-                textArea1.append("\n");
+
             }
         });
 
 
-
+        spinner1.addComponentListener(new ComponentAdapter() {
+        });
+        ADDButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textArea1.append((String)comboBox1.getSelectedItem());
+                textArea1.append("\n");
+            }
+        });
     }
 
 //    private void onName(){
@@ -123,11 +130,11 @@ public class Dialog extends JDialog {
 //    }
 
 
-    public static void main(String[] args) {
-        Dialog dialog = new Dialog();
-
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
+//    public static void main(String[] args) {
+//        Dialog dialog = new Dialog();
+//
+//        dialog.pack();
+//        dialog.setVisible(true);
+//        System.exit(0);
+//    }
 }
