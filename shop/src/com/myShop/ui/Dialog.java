@@ -1,5 +1,9 @@
 package com.myShop.ui;
 
+import com.myShop.domain.Client;
+import com.myShop.domain.Product;
+import com.myShop.domain.Shop;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -18,7 +22,7 @@ public class Dialog extends JDialog {
     private JButton ADDButton;
 
 
-    public Dialog() {
+    public Dialog(Shop shop) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -60,7 +64,9 @@ public class Dialog extends JDialog {
         });
 
         //all the Products
-        comboBox1.addItem("uyuyuyu");
+        for(int i = 0; i < shop.products.size();i++) {
+            comboBox1.addItem(shop.products.get(i).toString());
+        }
 
         //Order Item
         comboBox1.addActionListener(new ActionListener() {
@@ -69,6 +75,10 @@ public class Dialog extends JDialog {
 
             }
         });
+
+        shop.client.setName((String)Name.getText().trim());
+        shop.client.setName((String)surnameTextField.getText().trim());
+        shop.client.setName((String)numberTelephoneTextField.getText().trim());
 
 
         spinner1.addComponentListener(new ComponentAdapter() {
@@ -130,11 +140,15 @@ public class Dialog extends JDialog {
 //    }
 
 
-//    public static void main(String[] args) {
-//        Dialog dialog = new Dialog();
-//
-//        dialog.pack();
-//        dialog.setVisible(true);
-//        System.exit(0);
-//    }
+    public static void main(String[] args) {
+        Shop shop = new Shop();
+        Product prod = new Product("perepel",500);
+        shop.addProduct(prod);
+        shop.client = new Client();
+        Dialog dialog = new Dialog(shop);
+
+        dialog.pack();
+        dialog.setVisible(true);
+        System.exit(0);
+    }
 }
