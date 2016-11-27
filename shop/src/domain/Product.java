@@ -4,9 +4,9 @@ package domain;
  * Created by hp on 27.11.2016.
  */
 public class Product {
+    int idProduct;
     String name = "";
     long price = 0;
-    int count = 0;
 
     public Product(){}
 

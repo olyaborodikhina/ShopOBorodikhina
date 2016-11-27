@@ -1,6 +1,7 @@
 package UI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class Dialog extends JDialog {
@@ -14,6 +15,7 @@ public class Dialog extends JDialog {
     private JButton Order;
     private JLabel Name;
     private JTable Orders;
+    private JTextArea textArea1;
 
 
     public Dialog() {
@@ -26,7 +28,6 @@ public class Dialog extends JDialog {
                 onOK();
             }
         });
-
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -54,6 +55,23 @@ public class Dialog extends JDialog {
               //  onName();
             }
         });
+
+        comboBox1.addComponentListener(new ComponentAdapter() {
+        });
+        //all the Products
+        comboBox1.addItem("uyuyuyu");
+
+        //Order Item
+        comboBox1.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                textArea1.append((String)comboBox1.getSelectedItem());
+                textArea1.append("\n");
+            }
+        });
+
+
+
     }
 
 //    private void onName(){
@@ -107,6 +125,7 @@ public class Dialog extends JDialog {
 
     public static void main(String[] args) {
         Dialog dialog = new Dialog();
+
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
