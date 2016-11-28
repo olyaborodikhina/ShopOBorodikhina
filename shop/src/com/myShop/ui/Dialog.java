@@ -77,22 +77,23 @@ public class Dialog extends JDialog {
         }
 
 
-
         ADDButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textArea1.append((String)comboBox1.getSelectedItem());
-                textArea1.append(" count = ");
                 final int value = (Integer) spinner1.getValue();
-                textArea1.append(Integer.toString(value));
-                textArea1.append("\n");
-                String nameProduct = (String)comboBox1.getSelectedItem();
-                try {
-                    shop.addProductInOrder(shop.findProduct(nameProduct),value);
-                } catch (com.myShop.exception.exNotFoundProduct exNotFoundProduct) {
-                    exNotFoundProduct.printStackTrace();
+                if(value != 0) {
+                    textArea1.append((String)comboBox1.getSelectedItem());
+                    textArea1.append(" count = ");
+                    textArea1.append(Integer.toString(value));
+                    textArea1.append("\n");
+                    String nameProduct = (String) comboBox1.getSelectedItem();
+                    try {
+                        shop.addProductInOrder(shop.findProduct(nameProduct), value);
+                    } catch (com.myShop.exception.exNotFoundProduct exNotFoundProduct) {
+                        exNotFoundProduct.printStackTrace();
+                    }
+                    textArea2.setText("");
+                    textArea2.append(Long.toString(shop.getSumOrder()));
                 }
-                textArea2.append(Long.toString(shop.getSumOrder()));
-                textArea2.append("\n");
             }
         });
 
@@ -105,10 +106,14 @@ public class Dialog extends JDialog {
                 surnameTextField.setText("");
                 numberTelephoneTextField.setText("");
                 textArea3.append(shop.client.getName()+ " " + shop.client.getSurname() + " " + shop.client.getNumberTelephone()+ " ");
-
             }
         });
 
+        Order.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void onOrders(){
