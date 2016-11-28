@@ -9,11 +9,6 @@ import java.util.*;
  * Created by hp on 27.11.2016.
  */
 public class StorageInFile implements StorageProduct {
-   // private Product product;
-
-//    public StorageInFile(Product product){
-//        this.product = product;
-//    }
 
     public static Map<String ,Long> readProducts(String fileName) throws IOException, ClassNotFoundException {
         Map<String,Long> products= new HashMap<String , Long>();

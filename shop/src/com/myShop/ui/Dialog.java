@@ -1,8 +1,8 @@
 package com.myShop.ui;
 
-import com.myShop.domain.Client;
 import com.myShop.domain.Product;
 import com.myShop.domain.Shop;
+import com.myShop.exception.exNotFoundProduct;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -20,9 +20,11 @@ public class Dialog extends JDialog {
     private JTable Orders;
     private JTextArea textArea1;
     private JButton ADDButton;
+    private JTextArea textArea2;
+    private JTextArea textArea3;
 
 
-    public Dialog(Shop shop) {
+    public Dialog(final Shop shop) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -47,8 +49,7 @@ public class Dialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        Orders.addComponentListener(new ComponentAdapter() {
-        });
+
         Order.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOrders();
@@ -67,35 +68,48 @@ public class Dialog extends JDialog {
         for(int i = 0; i < shop.products.size();i++) {
             comboBox1.addItem(shop.products.get(i).toString());
         }
+        spinner1.addComponentListener(new ComponentAdapter() {});
 
-        //Order Item
-        comboBox1.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        shop.client.setName((String)Name.getText().trim());
-        shop.client.setName((String)surnameTextField.getText().trim());
-        shop.client.setName((String)numberTelephoneTextField.getText().trim());
+        try {
+            spinner1.commitEdit();
+        } catch ( java.text.ParseException e ) {
+            e.printStackTrace();
+        }
 
 
-        spinner1.addComponentListener(new ComponentAdapter() {
-        });
+
         ADDButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textArea1.append((String)comboBox1.getSelectedItem());
+                textArea1.append(" count = ");
+                final int value = (Integer) spinner1.getValue();
+                textArea1.append(Integer.toString(value));
                 textArea1.append("\n");
+                String nameProduct = (String)comboBox1.getSelectedItem();
+                try {
+                    shop.addProductInOrder(shop.findProduct(nameProduct),value);
+                } catch (com.myShop.exception.exNotFoundProduct exNotFoundProduct) {
+                    exNotFoundProduct.printStackTrace();
+                }
+                textArea2.append(Long.toString(shop.getSumOrder()));
+                textArea2.append("\n");
             }
         });
-    }
 
-//    private void onName(){
-//        String name = "";
-//        JOptionPane.showMessageDialog(name,
-//                nameTextField.getText());
-//    }
+        Order.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                shop.client.setName((String)nameTextField.getText().trim());
+                shop.client.setSurname((String)surnameTextField.getText().trim());
+                shop.client.setNumberTelephone((String)numberTelephoneTextField.getText().trim());
+                nameTextField.setText("");
+                surnameTextField.setText("");
+                numberTelephoneTextField.setText("");
+                textArea3.append(shop.client.getName()+ " " + shop.client.getSurname() + " " + shop.client.getNumberTelephone()+ " ");
+
+            }
+        });
+
+    }
 
     private void onOrders(){
     }

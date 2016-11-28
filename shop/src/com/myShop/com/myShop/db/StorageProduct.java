@@ -2,6 +2,8 @@ package com.myShop.com.myShop.db;
 
 import com.myShop.domain.Product;
 
+import java.util.List;
+
 /**
  * Created by hp on 28.11.2016.
  */

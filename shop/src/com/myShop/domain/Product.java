@@ -4,8 +4,8 @@ package com.myShop.domain;
  * Created by hp on 27.11.2016.
  */
 public class Product {
-   String name = "";
-   long price = 0;
+   public String name = "";
+   public long price = 0;
 
     public Product(){}
 
@@ -24,6 +24,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + " " + price;
+        return name;
     }
 }

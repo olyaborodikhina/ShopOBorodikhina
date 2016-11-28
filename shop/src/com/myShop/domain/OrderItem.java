@@ -8,7 +8,7 @@ public class OrderItem {
 
     public int idOrderItem = 0;
     public static Product product = new Product();
-    public static int count = 0;
+    public int count = 0;
 
     OrderItem(){}
 
@@ -20,6 +20,10 @@ public class OrderItem {
 
     public long getSumOrderItem(){
         return this.product.price * count;
+    }
+
+    public void setCount(int count){
+        this.count = count;
     }
 
 

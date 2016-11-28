@@ -12,10 +12,11 @@ public class Launcher {
     public static void main(String[] args) {
         Shop shop = new Shop();
         Product prod = new Product("perepel",500);
-        shop.addProduct(prod);
+        Client client = new Client();
+        shop.addProductInShop(prod);
         shop.client = new Client();
-        Dialog dialog = new Dialog(shop);
 
+        Dialog dialog = new Dialog(shop);
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

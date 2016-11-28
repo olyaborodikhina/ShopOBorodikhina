@@ -16,7 +16,6 @@ public class Client {
         this.name = name;
         this.surname = surname;
         this.numberTelephone = numberTelephone;
-        //this.address = address;
     }
 
     public void setName(String name){
@@ -29,5 +28,17 @@ public class Client {
 
     public void setNumberTelephone(String numberTelephone){
         this.numberTelephone = numberTelephone;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
+    public String getNumberTelephone(){
+        return numberTelephone;
     }
 }
