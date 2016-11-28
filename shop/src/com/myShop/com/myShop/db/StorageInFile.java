@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by hp on 27.11.2016.
  */
-public class StorageInFile {
+public class StorageInFile implements StorageProduct {
    // private Product product;
 
 //    public StorageInFile(Product product){
@@ -51,4 +51,11 @@ public class StorageInFile {
         return map;
     }
 
+    public void addProduct() {
+
+    }
+
+    public Product getById(int id) {
+        return null;
+    }
 }

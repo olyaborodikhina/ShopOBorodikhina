@@ -139,16 +139,4 @@ public class Dialog extends JDialog {
 //       // dispose();
 //    }
 
-
-    public static void main(String[] args) {
-        Shop shop = new Shop();
-        Product prod = new Product("perepel",500);
-        shop.addProduct(prod);
-        shop.client = new Client();
-        Dialog dialog = new Dialog(shop);
-
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }
