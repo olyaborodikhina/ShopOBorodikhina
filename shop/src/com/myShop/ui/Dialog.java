@@ -2,7 +2,7 @@ package com.myShop.ui;
 
 import com.myShop.domain.Product;
 import com.myShop.domain.Shop;
-import com.myShop.exception.ClientExistsException;
+import com.myShop.exception.ClientNotExistsException;
 import com.myShop.exception.exNotFoundProduct;
 
 import javax.swing.*;
@@ -105,7 +105,7 @@ public class Dialog extends JDialog {
                     textArea1.setText("");
                     spinner1.setValue(0);
                     shop.addToOrderInTransaction(shop.client,shop.curOrder);
-                } catch (ClientExistsException e1) {
+                } catch (ClientNotExistsException e1) {
                     e1.printStackTrace();
                 }
 

@@ -1,6 +1,6 @@
 package com.myShop;
 
-import com.myShop.com.myShop.db.StorageInFile;
+import com.myShop.db.StorageInFile;
 import com.myShop.domain.Client;
 import com.myShop.domain.Product;
 import com.myShop.domain.Shop;

@@ -1,4 +1,4 @@
-package com.myShop.com.myShop.db;
+package com.myShop.db;
 
 import com.myShop.domain.Product;
 
