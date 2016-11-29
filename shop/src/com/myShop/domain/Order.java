@@ -18,20 +18,14 @@ public class Order {
         return result;
     }
 
+    public void addNewOrder(){
+        orderItems.clear();
+    }
+
     public void addOrderItem(Product product, int count){
         orderItems.add(new OrderItem(product,count));
     }
 
-//    public void addProducts(Client client,OrderItem orderItem){
-//        this.client = client;
-//        this.orderItems.add(orderItem);
-//    }
-//
-//    public Order(Client client, ArrayList<OrderItem> orderItems){
-//        idTransaction++;
-//        this.client = client;
-//        this.orderItems = orderItems;
-//    }
 
     
 }

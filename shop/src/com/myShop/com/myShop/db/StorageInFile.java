@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by hp on 27.11.2016.
  */
-public class StorageInFile implements StorageProduct {
+public class StorageInFile {
 
     public static Map<String ,Long> readProducts(String fileName) throws IOException, ClassNotFoundException {
         Map<String,Long> products= new HashMap<String , Long>();
@@ -39,18 +39,12 @@ public class StorageInFile implements StorageProduct {
     private static Map fillInMap(String[] array){
         Map<String, Long> map = new HashMap<String, Long>();
         String[] elem;
-        for (int i = 0; i < array.length; i++) {
-            elem = array[i].split("=");
-            map.put(elem[0], Long.parseLong(elem[1]));
-        }
+        int length = array.length;
+        map.put(array[0], Long.parseLong(array[1]));
         return map;
     }
 
-    public void addProduct() {
-
-    }
-
-    public Product getById(int id) {
+    public Product getProductById(int id) {
         return null;
     }
 }

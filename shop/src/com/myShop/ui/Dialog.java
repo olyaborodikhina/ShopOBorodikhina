@@ -2,6 +2,7 @@ package com.myShop.ui;
 
 import com.myShop.domain.Product;
 import com.myShop.domain.Shop;
+import com.myShop.exception.ClientExistsException;
 import com.myShop.exception.exNotFoundProduct;
 
 import javax.swing.*;
@@ -22,7 +23,6 @@ public class Dialog extends JDialog {
     private JButton ADDButton;
     private JTextArea textArea2;
     private JTextArea textArea3;
-
 
     public Dialog(final Shop shop) {
         setContentPane(contentPane);
@@ -55,14 +55,7 @@ public class Dialog extends JDialog {
                 onOrders();
             }
         });
-        nameTextField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-              //  onName();
-            }
-        });
 
-        comboBox1.addComponentListener(new ComponentAdapter() {
-        });
 
         //all the Products
         for(int i = 0; i < shop.products.size();i++) {
@@ -76,18 +69,20 @@ public class Dialog extends JDialog {
             e.printStackTrace();
         }
 
-
         ADDButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 final int value = (Integer) spinner1.getValue();
                 if(value != 0) {
-                    textArea1.append((String)comboBox1.getSelectedItem());
+                    String nameProduct = (String)comboBox1.getSelectedItem();
+                    textArea1.append(nameProduct);
                     textArea1.append(" count = ");
                     textArea1.append(Integer.toString(value));
                     textArea1.append("\n");
-                    String nameProduct = (String) comboBox1.getSelectedItem();
+                    nameProduct = (String)comboBox1.getSelectedItem();
                     try {
                         shop.addProductInOrder(shop.findProduct(nameProduct), value);
+
                     } catch (com.myShop.exception.exNotFoundProduct exNotFoundProduct) {
                         exNotFoundProduct.printStackTrace();
                     }
@@ -99,18 +94,22 @@ public class Dialog extends JDialog {
 
         Order.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                shop.client.setName((String)nameTextField.getText().trim());
-                shop.client.setSurname((String)surnameTextField.getText().trim());
-                shop.client.setNumberTelephone((String)numberTelephoneTextField.getText().trim());
-                nameTextField.setText("");
-                surnameTextField.setText("");
-                numberTelephoneTextField.setText("");
-                textArea3.append(shop.client.getName()+ " " + shop.client.getSurname() + " " + shop.client.getNumberTelephone()+ " ");
-            }
-        });
-
-        Order.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+                try {
+                    shop.client.setName((String)nameTextField.getText().trim());
+                    shop.client.setSurname((String)surnameTextField.getText().trim());
+                    shop.client.setNumberTelephone((String)numberTelephoneTextField.getText().trim());
+                    nameTextField.setText("");
+                    surnameTextField.setText("");
+                    numberTelephoneTextField.setText("");
+                    textArea3.append(shop.client.getName()+ " " + shop.client.getSurname() + " " + shop.client.getNumberTelephone()+ " " + " sum = " + shop.curOrder.getSum());
+                    textArea3.append("\n");
+                    textArea2.setText("");
+                    textArea1.setText("");
+                    spinner1.setValue(0);
+                    shop.addToOrderInTransaction(shop.client,shop.curOrder);
+                } catch (ClientExistsException e1) {
+                    e1.printStackTrace();
+                }
 
             }
         });
@@ -128,34 +127,5 @@ public class Dialog extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
-//    private void Orders() {
-//        String[] columnNames = {
-//                "Name",
-//                "Last modified",
-//                "Type",
-//                "Size"
-//        };
-//
-//        String[][] data = {
-//                {"addins", "02.11.2006 19:15", "Folder", ""},
-//                {"AppPatch", "03.10.2006 14:10", "Folder", ""},
-//                {"assembly", "02.11.2006 14:20", "Folder", ""},
-//                {"Boot", "13.10.2007 10:46", "Folder", ""},
-//                {"Branding", "13.10.2007 12:10", "Folder", ""},
-//                {"Cursors", "23.09.2006 16:34", "Folder", ""},
-//                {"Debug", "07.12.2006 17:45", "Folder", ""},
-//                {"Fonts", "03.10.2006 14:08", "Folder", ""},
-//                {"Help", "08.11.2006 18:23", "Folder", ""},
-//                {"explorer.exe", "18.10.2006 14:13", "File", "2,93MB"},
-//                {"helppane.exe", "22.08.2006 11:39", "File", "4,58MB"},
-//                {"twunk.exe", "19.08.2007 10:37", "File", "1,08MB"},
-//                {"nsreg.exe", "07.08.2007 11:14", "File", "2,10MB"},
-//                {"avisp.exe", "17.12.2007 16:58", "File", "12,67MB"},
-//        };
-//
-//        Orders = new JTable(data, columnNames);
-//       // dispose();
-//    }
 
 }

@@ -19,11 +19,13 @@ public class Shop {
     public ArrayList<Product> products = new ArrayList<Product>();
     public Order curOrder = new Order();
 
-
-    public Shop(){}
-
     public Order getOrder(Client client){
         return orders.get(client);
+    }
+
+    public void addToOrderInTransaction(Client client,Order order){
+        orders.put(client,order);
+        curOrder.addNewOrder();
     }
 
     public void addProductInOrder(Product product,int count){
@@ -48,7 +50,6 @@ public class Shop {
             if(products.get(i).getName().equals(nameProduct))
                 product = products.get(i);
         }
-
         if(product == null)
             throw new exNotFoundProduct();
         return product;

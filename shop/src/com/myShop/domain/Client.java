@@ -1,5 +1,7 @@
 package com.myShop.domain;
 
+import com.myShop.exception.ClientExistsException;
+
 /**
  * Created by hp on 27.11.2016.
  */
@@ -18,16 +20,32 @@ public class Client {
         this.numberTelephone = numberTelephone;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String name) throws ClientExistsException {
+        if(!name.equals(""))
+        {
+            this.name = name;
+        }
+        else
+        throw new ClientExistsException();
+
     }
 
-    public void setSurname(String surname){
-        this.surname = surname;
+    public void setSurname(String surname) throws ClientExistsException {
+
+        if(!surname.equals(""))
+        {
+            this.surname = surname;
+        }
+        else
+            throw new ClientExistsException();
     }
 
-    public void setNumberTelephone(String numberTelephone){
-        this.numberTelephone = numberTelephone;
+    public void setNumberTelephone(String numberTelephone) throws ClientExistsException {
+        if(!numberTelephone.equals("")) {
+            this.numberTelephone = numberTelephone;
+        }
+        else
+            throw new ClientExistsException();
     }
 
     public String getName(){
