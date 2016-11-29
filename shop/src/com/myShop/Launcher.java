@@ -13,7 +13,6 @@ import java.util.Map;
 /**
  * Created by hp on 28.11.2016.
  */
-//C:\Users\hp\Desktop\repositiries\ShopOBorodikhina\shop\files\products
 public class Launcher {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Shop shop = new Shop();

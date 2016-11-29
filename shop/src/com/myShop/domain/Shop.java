@@ -26,6 +26,7 @@ public class Shop {
     public void addToOrderInTransaction(Client client,Order order){
         orders.put(client,order);
         curOrder.addNewOrder();
+        curOrder.addNewOrder();
     }
 
     public void addProductInOrder(Product product,int count){
