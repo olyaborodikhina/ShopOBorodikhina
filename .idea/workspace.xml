@@ -36,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderItem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrderItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shop/src/com/myShop/domain/OrderItem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -79,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Dialog.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shop/src/com/myShop/ui/Dialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="96" column="11" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
+            <state relative-caret-position="272">
+              <caret line="74" column="64" selection-start-line="74" selection-start-column="64" selection-end-line="74" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,8 +151,8 @@
         <option value="$PROJECT_DIR$/shop/src/com/myShop/domain/Order.java" />
         <option value="$PROJECT_DIR$/shop/src/com/myShop/db/StorageInFile.java" />
         <option value="$PROJECT_DIR$/shop/src/com/myShop/Launcher.java" />
-        <option value="$PROJECT_DIR$/shop/src/com/myShop/ui/Dialog.java" />
         <option value="$PROJECT_DIR$/shop/src/com/myShop/domain/OrderItem.java" />
+        <option value="$PROJECT_DIR$/shop/src/com/myShop/ui/Dialog.java" />
       </list>
     </option>
   </component>
@@ -1026,21 +1026,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop/src/com/myShop/ui/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="96" column="11" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shop/src/com/myShop/domain/OrderItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/src/com/myShop/ui/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="74" column="64" selection-start-line="74" selection-start-column="64" selection-end-line="74" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

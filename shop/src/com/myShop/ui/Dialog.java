@@ -73,7 +73,6 @@ public class Dialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
 
                 final int value = (Integer) spinner1.getValue();
-                System.out.println("value = " + value);
                 if(value > 0) {
                     String nameProduct = (String)comboBox1.getSelectedItem();
                     textArea1.append(nameProduct);
