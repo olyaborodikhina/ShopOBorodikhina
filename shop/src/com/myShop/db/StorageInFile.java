@@ -1,6 +1,7 @@
 package com.myShop.db;
 
 import com.myShop.domain.Product;
+import com.myShop.exception.ProductNotFoundInFileException;
 
 import java.io.*;
 import java.util.*;
@@ -10,41 +11,43 @@ import java.util.*;
  */
 public class StorageInFile {
 
-    public static Map<String ,Long> readProducts(String fileName) throws IOException, ClassNotFoundException {
-        Map<String,Long> products= new HashMap<String , Long>();
-        String[] array;
+    public static Map<String ,Long> readProducts(String fileName) throws IOException, IllegalAccessException{
+        Map<String,Long> products = new HashMap<String , Long>();
+
         if (fileName == null) {
-            throw new ClassNotFoundException();
+            throw new IllegalArgumentException();
         }
 
+        LineNumberReader lineNumberReader = null;
         try {
-            LineNumberReader lineNumberReader =
+            lineNumberReader =
                     new LineNumberReader(
                             new BufferedReader(
                                     new FileReader(fileName)));
             String line;
+
             while ((line = lineNumberReader.readLine()) != null) {
-                array = line.split(",");
-                Map map = fillInMap(array);
-                products.putAll(map);
+                String[] array = line.split(",");
+                Map<String, Long> map = new HashMap<String, Long>();
+                int length = array.length;
+                if(length == 2) {
+                    map.put(array[0], Long.parseLong(array[1]));
+                    products.putAll(map);
+                }else
+                    throw new ProductNotFoundInFileException();
+
             }
 
             lineNumberReader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ProductNotFoundInFileException e) {
+            e.printStackTrace();
+        } finally {
+            if(lineNumberReader != null) {
+                lineNumberReader.close();
+            }
         }
         return products;
-    }
-
-    private static Map fillInMap(String[] array){
-        Map<String, Long> map = new HashMap<String, Long>();
-        String[] elem;
-        int length = array.length;
-        map.put(array[0], Long.parseLong(array[1]));
-        return map;
-    }
-
-    public Product getProductById(int id) {
-        return null;
     }
 }

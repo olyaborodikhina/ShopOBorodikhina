@@ -7,7 +7,7 @@ import java.util.List;
  * Created by hp on 27.11.2016.
  */
 public class Order {
-    public int idTransaction = 0;
+
     public List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
     public long getSum(){
@@ -23,9 +23,11 @@ public class Order {
     }
 
     public void addOrderItem(Product product, int count){
+
         orderItems.add(new OrderItem(product,count));
+
     }
 
 
-    
+
 }

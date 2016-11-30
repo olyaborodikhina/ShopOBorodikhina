@@ -7,6 +7,8 @@ import com.myShop.exception.exNotFoundProduct;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Dialog extends JDialog {
     private JPanel contentPane;
@@ -28,6 +30,7 @@ public class Dialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +62,6 @@ public class Dialog extends JDialog {
         for(int i = 0; i < shop.products.size();i++) {
             comboBox1.addItem(shop.products.get(i).toString());
         }
-        spinner1.addComponentListener(new ComponentAdapter() {});
 
         try {
             spinner1.commitEdit();
@@ -71,7 +73,8 @@ public class Dialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
 
                 final int value = (Integer) spinner1.getValue();
-                if(value != 0) {
+                System.out.println("value = " + value);
+                if(value > 0) {
                     String nameProduct = (String)comboBox1.getSelectedItem();
                     textArea1.append(nameProduct);
                     textArea1.append(" count = ");
@@ -86,6 +89,9 @@ public class Dialog extends JDialog {
                     }
                     textArea2.setText("");
                     textArea2.append(Long.toString(shop.getSumOrder()));
+                }
+                else{
+                    throw new IllegalArgumentException();
                 }
             }
         });
