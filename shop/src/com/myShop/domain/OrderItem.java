@@ -6,7 +6,7 @@ package com.myShop.domain;
  */
 public class OrderItem {
     public int idOrderItem = 0;
-    public static Product product = new Product();
+    public Product product;
     public int count = 0;
 
     OrderItem(){}
